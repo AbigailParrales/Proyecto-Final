@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -19,6 +20,7 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	private Graphics2D g2D;
 	private Image image;
 	Lapiz lp;
+	ArrayList <Pintable> p = new ArrayList();
 	
 	public PanelDibujo(){
 		super();
@@ -35,9 +37,14 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		
+		
+		
+		
 		if(lp!=null){
 			this.lp.pintate(g);
 		}
+		
 		
 		//g.drawLine(arg0, arg1, arg2, arg3);
 	}

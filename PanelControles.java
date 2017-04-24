@@ -63,8 +63,9 @@ public class PanelControles extends JPanel{
 		this.setPreferredSize(new Dimension(200,700));
 		this.setBackground(new Color(204,255,102));
 		
-		this.paintL=new JLabel("Paint Remasterizado");
-		this.paintL.setFont(new Font("Helvetica",Font.BOLD,18));
+		this.paintL=new JLabel("Paint");
+		this.paintL.setFont(new Font("Calibri",Font.BOLD,60));
+		this.paintL.setForeground(Color.WHITE);
 		this.add(paintL);
 		
 		this.foto=new ImageIcon("foto.png");
