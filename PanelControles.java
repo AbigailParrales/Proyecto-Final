@@ -12,14 +12,21 @@ import javax.swing.JRadioButton;
 
 public class PanelControles extends JPanel implements ActionListener{
 	private JRadioButton fotoB,
-	pincelB,
-	borradorB,
-	paletaB,
-	sello1B,
-	sello2B,
-	sello3B,
-	sello4B,
-	guardarB;
+						pincelB,
+						borradorB,
+						paletaB,
+						sello1B,
+						sello2B,
+						sello3B,
+						sello4B,
+						cuadradoB,
+						circuloB,
+						trianguloB,
+						lineaB,
+						guardarB;
+
+				
+
 	private JLabel paintL;
 	private ArrayList<Pintable> figuras;
 
@@ -72,6 +79,26 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.sello4B.setPreferredSize(new Dimension(80,80));
 		this.sello4B.addActionListener(this);
 		this.add(sello4B);
+		
+		this.cuadradoB=new JRadioButton(new ImageIcon("cuadrado.png"));
+		this.cuadradoB.setPreferredSize(new Dimension(80,80));
+		this.cuadradoB.addActionListener(this);
+		this.add(cuadradoB);
+		
+		this.circuloB=new JRadioButton(new ImageIcon("circulo.png"));
+		this.circuloB.setPreferredSize(new Dimension(80,80));
+		this.circuloB.addActionListener(this);
+		this.add(circuloB);
+		
+		this.trianguloB=new JRadioButton(new ImageIcon("triangulo.png"));
+		this.trianguloB.setPreferredSize(new Dimension(80,80));
+		this.trianguloB.addActionListener(this);
+		this.add(trianguloB);
+		
+		this.lineaB=new JRadioButton(new ImageIcon("linea.png"));
+		this.lineaB.setPreferredSize(new Dimension(80,80));
+		this.lineaB.addActionListener(this);
+		this.add(lineaB);
 
 		this.guardarB=new JRadioButton(new ImageIcon("guardar.png"));
 		this.guardarB.setPreferredSize(new Dimension(80,80));
@@ -88,7 +115,7 @@ public class PanelControles extends JPanel implements ActionListener{
 			this.figuras.add(new Lapiz());
 			System.out.println("Lapiz");
 		}
-		else if(e.getSource()==){
+	/*	else if(e.getSource()==){
 
 		}
 		else if(e.getSource()==){
@@ -107,5 +134,6 @@ public class PanelControles extends JPanel implements ActionListener{
 
 		}
 
-	}
+	}*/
+}
 }
