@@ -35,8 +35,9 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	}
 	
 	public void paintComponent(Graphics g){
-		
 		super.paintComponent(g);
+		
+		
 		/*if(lp!=null){
 			this.lp.pintate(g);
 		}
