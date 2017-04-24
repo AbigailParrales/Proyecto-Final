@@ -30,6 +30,7 @@ public class PanelControles extends JPanel{
 */
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -60,10 +61,10 @@ public class PanelControles extends JPanel{
 	public PanelControles(){
 		super();
 		this.setPreferredSize(new Dimension(200,700));
-		this.setBackground(new Color(204,153,255));
+		this.setBackground(new Color(204,255,102));
 		
 		this.paintL=new JLabel("Paint Remasterizado");
-		//this.paintL
+		this.paintL.setFont(new Font("Helvetica",Font.BOLD,18));
 		this.add(paintL);
 		
 		this.foto=new ImageIcon("foto.png");
