@@ -18,7 +18,8 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 				y2;
 	private Graphics2D g2D;
 	private Image image;
-	Lapiz lp;
+	
+	//Lapiz lp;
 	
 	public PanelDibujo(){
 		super();
@@ -34,11 +35,12 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	}
 	
 	public void paintComponent(Graphics g){
+		
 		super.paintComponent(g);
-		if(lp!=null){
+		/*if(lp!=null){
 			this.lp.pintate(g);
 		}
-		
+		*/
 		//g.drawLine(arg0, arg1, arg2, arg3);
 	}
 
