@@ -18,6 +18,7 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 				y2;
 	private Graphics2D g2D;
 	private Image image;
+	Lapiz lp;
 	
 	public PanelDibujo(){
 		super();
@@ -33,14 +34,12 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	}
 	
 	public void paintComponent(Graphics g){
-		if(image == null){
-			this.image = createImage(getSize().width, getSize().height);
-			this.g2D = (Graphics2D)image.getGraphics();
-			this.g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			clear();
-
+		super.paintComponent(g);
+		if(lp!=null){
+			this.lp.pintate(g);
 		}
-		g.drawImage(image, 0, 0, null);
+		
+		//g.drawLine(arg0, arg1, arg2, arg3);
 	}
 
 
@@ -54,7 +53,7 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		//this.mouseDrag=true;
-		
+		/*
 		this.x2=e.getX();
 		this.y2=e.getY();
 		
@@ -63,7 +62,9 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 			repaint();
 			this.x2=this.x1;
 			this.y2=this.y1;
-		}
+		}*/
+		this.lp.agregarCoordenada(e.getX(), e.getY());
+		repaint();
 	}
 
 	@Override
@@ -93,7 +94,8 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		this.lp=new Lapiz();
+		this.lp.agregarCoordenada(e.getX(), e.getY());
 	}
 
 	@Override
