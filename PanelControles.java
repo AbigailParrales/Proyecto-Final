@@ -115,8 +115,11 @@ public class PanelControles extends JPanel implements ActionListener{
 			this.figuras.add(new Lapiz());
 			System.out.println("Lapiz");
 		}
-	/*	else if(e.getSource()==){
-
+		else if(e.getSource()==this.cuadradoB){
+			this.figuras.add(new Cuadrado());
+		}
+		else if(e.getSource()==this.circuloB){
+			this.figuras.add(new Circulo());
 		}
 		else if(e.getSource()==){
 
@@ -130,10 +133,6 @@ public class PanelControles extends JPanel implements ActionListener{
 		else if(e.getSource()==){
 
 		}
-		else if(e.getSource()==){
 
-		}
-
-	}*/
 }
 }
