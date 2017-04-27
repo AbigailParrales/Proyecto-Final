@@ -7,26 +7,29 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class PanelDibujo extends JPanel implements MouseMotionListener, MouseListener{
-	private boolean mouseDrag;
 	private int x1,
 				y1,
 				x2,
 				y2;
 	private Graphics2D g2D;
-	private Image image;
+	private ArrayList<Pintable> figuras;
 	
 	//Lapiz lp;
 	
-	public PanelDibujo(){
+	public PanelDibujo(PanelControles pc){
 		super();
 		this.setPreferredSize(new Dimension(800,700));
 		this.setBackground(Color.WHITE);
 		
-		this.mouseDrag=false;
+		pc= new PanelControles();
+		
+		this.figuras=new ArrayList<Pintable>();
 		
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
@@ -37,6 +40,11 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
+		for (int i=0;i<figuras.size();i++){
+			if(this.figuras.get(i)!=null){
+				this.figuras.get(i).pintate(g);
+			}
+		}
 		
 		/*if(lp!=null){
 			this.lp.pintate(g);
@@ -45,13 +53,13 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		//g.drawLine(arg0, arg1, arg2, arg3);
 	}
 
-
+	/*
 	public void clear(){
 		g2D.setPaint(Color.white);
 		g2D.fillRect(0, 0, getSize().width, getSize().height);
 		g2D.setPaint(Color.black);
 		repaint();
-	}
+	}*/
 	
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -66,8 +74,14 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 			this.x2=this.x1;
 			this.y2=this.y1;
 		}*/
-		this.lp.agregarCoordenada(e.getX(), e.getY());
-		repaint();
+		for (int i=0;i<figuras.size();i++){
+			if(this.figuras.get(i)!=null){
+				this.figuras.get(i).agregarCoordenada(e.getX(), e.getY());
+				repaint();;
+			}
+		}
+		//this.lp.agregarCoordenada(e.getX(), e.getY());
+		//repaint();
 	}
 
 	@Override

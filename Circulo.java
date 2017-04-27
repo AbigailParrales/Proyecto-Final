@@ -16,7 +16,7 @@ private ArrayList<Point> puntos;
 	public void pintate(Graphics g) {
 		Point pA=this.puntos.get(0);
 		for(Point p:this.puntos){
-			g.drawOval((int)p.getX(), (int)p.getY(), (int)pA.getX(), (int)pA.getY());
+			g.drawOval((int)p.getX(), (int)p.getY(), (int)pA.getX()-(int)p.getX(), (int)pA.getY()-(int)p.getY());
 			pA=p;
 		}
 	}

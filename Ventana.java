@@ -48,8 +48,9 @@ public class Ventana extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(new Dimension(1000,700));
 		this.setResizable(false);
-		this.add(new PanelControles(), BorderLayout.WEST);
-		this.add(new PanelDibujo(), BorderLayout.EAST);
+		PanelControles pc= new PanelControles();
+		this.add(pc, BorderLayout.WEST);
+		this.add(new PanelDibujo(pc), BorderLayout.EAST);
 		this.pack();
 		this.setVisible(true);
 	}

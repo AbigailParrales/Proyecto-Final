@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+@SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
 	private JRadioButton fotoB,
 						pincelB,
@@ -35,7 +35,7 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.setPreferredSize(new Dimension(200,700));
 		this.setBackground(new Color(204,153,255));
 
-		this.figuras=new ArrayList();		
+		this.figuras=new ArrayList<Pintable>();		
 		this.paintL=new JLabel("Paint Remasterizado");
 		//this.paintL
 		this.add(paintL);
@@ -109,6 +109,20 @@ public class PanelControles extends JPanel implements ActionListener{
 
 	}
 
+	
+	
+	public ArrayList<Pintable> getFiguras() {
+		return figuras;
+	}
+
+
+
+	public void setFiguras(ArrayList<Pintable> figuras) {
+		this.figuras = figuras;
+	}
+
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==this.pincelB){
@@ -117,22 +131,13 @@ public class PanelControles extends JPanel implements ActionListener{
 		}
 		else if(e.getSource()==this.cuadradoB){
 			this.figuras.add(new Cuadrado());
+			System.out.println("Lapiz");
 		}
 		else if(e.getSource()==this.circuloB){
 			this.figuras.add(new Circulo());
 		}
-		else if(e.getSource()==){
-
+		else if(e.getSource()==this.lineaB){
+			this.figuras.add(new Linea());
 		}
-		else if(e.getSource()==){
-
 		}
-		else if(e.getSource()==){
-
-		}
-		else if(e.getSource()==){
-
-		}
-
-}
 }

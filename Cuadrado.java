@@ -16,8 +16,7 @@ public class Cuadrado implements Pintable {
 	public void pintate(Graphics g) {
 		Point pA=this.puntos.get(0);
 		for(Point p:this.puntos){
-			g.drawRect((int)p.getX(), (int)p.getY(), (int)pA.getX(), (int)pA.getY());
-			pA=p;
+			g.drawRect((int)p.getX(), (int)p.getY(), (int)pA.getX()-(int)p.getX(), (int)pA.getY()-(int)p.getY());
 		}
 	}
 

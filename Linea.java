@@ -17,7 +17,6 @@ public class Linea implements Pintable {
 		Point pA=this.puntos.get(0);
 		for(Point p:this.puntos){
 			g.drawLine((int)p.getX(), (int)p.getY(), (int)pA.getX(), (int)pA.getY());
-			pA=p;
 		}
 	}
 
