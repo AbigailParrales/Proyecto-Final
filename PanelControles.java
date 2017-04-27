@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.Font;
 
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,22 +13,23 @@ import javax.swing.JRadioButton;
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements ActionListener{
 	private JRadioButton fotoB,
-						pincelB,
-						borradorB,
-						paletaB,
-						sello1B,
-						sello2B,
-						sello3B,
-						sello4B,
-						cuadradoB,
-						circuloB,
-						//trianguloB,
-						lineaB,
-						guardarB;
-	
+	pincelB,
+	borradorB,
+	paletaB,
+	sello1B,
+	sello2B,
+	sello3B,
+	sello4B,
+	cuadradoB,
+	circuloB,
+	//trianguloB,
+	lineaB,
+	guardarB;
+
+	@SuppressWarnings("unused")
 	private int tamaño;
 
-			
+
 	private JLabel paintL;
 	private ArrayList<Pintable> figuras;
 
@@ -91,25 +91,25 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.sello4B.addActionListener(this);
 		this.sello4B.setOpaque(false);
 		this.add(sello4B);
-		
+
 		this.cuadradoB=new JRadioButton(new ImageIcon("cuadrado.png"));
 		this.cuadradoB.setPreferredSize(new Dimension(80,80));
 		this.cuadradoB.addActionListener(this);
 		this.cuadradoB.setOpaque(false);
 		this.add(cuadradoB);
-		
+
 		this.circuloB=new JRadioButton(new ImageIcon("circulo.png"));
 		this.circuloB.setPreferredSize(new Dimension(80,80));
 		this.circuloB.addActionListener(this);
 		this.circuloB.setOpaque(false);
 		this.add(circuloB);
-		
+
 		/*this.trianguloB=new JRadioButton(new ImageIcon("triangulo.png"));
 		this.trianguloB.setPreferredSize(new Dimension(80,80));
 		this.trianguloB.addActionListener(this);
 		this.trianguloB.setOpaque(false);
 		this.add(trianguloB); */
-		
+
 		this.lineaB=new JRadioButton(new ImageIcon("linea.png"));
 		this.lineaB.setPreferredSize(new Dimension(80,80));
 		this.lineaB.addActionListener(this);
@@ -125,51 +125,35 @@ public class PanelControles extends JPanel implements ActionListener{
 
 
 	}
-<<<<<<< HEAD
 
-	
-	
+
 	public ArrayList<Pintable> getFiguras() {
 		return figuras;
 	}
 
-
-
-	public void setFiguras(ArrayList<Pintable> figuras) {
-		this.figuras = figuras;
-	}
-
-
-
-=======
-	
-	/*public ArrayList<Pintable> getFiguras(){
-		return figuras;
-	}
-	
-	public int getTamaño(){
-		return figuras.size();
-	}
-*/
->>>>>>> origin/master
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==this.pincelB){
 			this.figuras.add(new Lapiz());
 			System.out.println("Lapiz");
+			System.out.println(this.figuras);
 		}
 		else if(e.getSource()==this.cuadradoB){
 			this.figuras.add(new Cuadrado());
-			System.out.println("Lapiz");
+			System.out.println("Cuadrado");
+			System.out.println(this.figuras);
 		}
 		else if(e.getSource()==this.circuloB){
 			this.figuras.add(new Circulo());
+			System.out.println("Circulo");
+			System.out.println(this.figuras);
 		}
-<<<<<<< HEAD
 		else if(e.getSource()==this.lineaB){
 			this.figuras.add(new Linea());
-=======
-		/*else if(e.getSource()==){
+			System.out.println("Linea");
+			System.out.println(this.figuras);
+
+			/*else if(e.getSource()==){
 
 		}
 		else if(e.getSource()==){
@@ -177,12 +161,10 @@ public class PanelControles extends JPanel implements ActionListener{
 		}
 		else if(e.getSource()==){
 
->>>>>>> origin/master
 		}
 		}
-<<<<<<< HEAD
-=======
-*/
-}
->>>>>>> origin/master
+
+			 */
+		}
+	}
 }

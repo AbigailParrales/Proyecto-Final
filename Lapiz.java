@@ -7,6 +7,7 @@ public class Lapiz implements Pintable {
 	
 	public Lapiz(){
 		this.puntos=new ArrayList<>();
+		//pintate(g);
 	}
 	
 	public void agregarCoordenada(int x, int y){
