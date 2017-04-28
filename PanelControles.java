@@ -304,6 +304,8 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		}
 	}
 	
+	//public void 
+	
 	public PanelDibujo getPd() {
 		return pd;
 	}
