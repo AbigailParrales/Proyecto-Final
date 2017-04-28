@@ -4,9 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Font;
+import java.awt.Graphics;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,26 +23,28 @@ import javax.swing.JRadioButton;
 
 public class PanelControles extends JPanel implements  ActionListener, MouseListener{
 	private JRadioButton fotoB,
-						pincelB,
-						borradorB,
-						paletaB,
-						sello1B,
-						sello2B,
-						sello3B,
-						sello4B,
-						cuadradoB,
-						circuloB,
-						lineaB,
-						guardarB;
-	
+	pincelB,
+	borradorB,
+	paletaB,
+	sello1B,
+	sello2B,
+	sello3B,
+	sello4B,
+	cuadradoB,
+	circuloB,
+	lineaB,
+	guardarB;
+
 	//private int tamaño;
-			
+
 	private JLabel paintL;
-	
+
 	private JFileChooser fcFoto,
-						 fcSave;
-	
-	private String rutaFoto;
+	fcSave;
+
+	private String rutaFoto,
+				   rutaGuardar;
+	public PanelDibujo pd;
 
 	public PanelControles(){
 		super();
@@ -48,7 +55,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.paintL=new JLabel("Paint Remasterizado");
 		this.add(paintL);
 		paintL.setFont(new Font("Helvetica", Font.BOLD,18));
-		
+
 		this.fotoB=new JRadioButton(new ImageIcon("foto.png"));
 		this.fotoB.setPreferredSize(new Dimension(80,80));
 		this.fotoB.addMouseListener(this);
@@ -98,19 +105,19 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.sello4B.addMouseListener(this);
 		this.sello4B.setOpaque(false);
 		this.add(sello4B);
-		
+
 		this.cuadradoB=new JRadioButton(new ImageIcon("cuadrado.png"));
 		this.cuadradoB.setPreferredSize(new Dimension(80,80));
 		this.cuadradoB.addMouseListener(this);
 		this.cuadradoB.setOpaque(false);
 		this.add(cuadradoB);
-		
+
 		this.circuloB=new JRadioButton(new ImageIcon("circulo.png"));
 		this.circuloB.setPreferredSize(new Dimension(80,80));
 		this.circuloB.addMouseListener(this);
 		this.circuloB.setOpaque(false);
 		this.add(circuloB);
-		
+
 		this.lineaB=new JRadioButton(new ImageIcon("linea.png"));
 		this.lineaB.setPreferredSize(new Dimension(80,80));
 		this.lineaB.addMouseListener(this);
@@ -125,7 +132,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.add(guardarB);
 
 		ButtonGroup bg=new ButtonGroup();
-		
+
 		bg.add(fotoB);
 		bg.add(pincelB);
 		bg.add(borradorB);
@@ -138,10 +145,15 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		bg.add(circuloB);
 		bg.add(lineaB);
 		bg.add(guardarB);
-		
+
 		this.rutaFoto="";
+		this.rutaGuardar="";
+
+		this.fcFoto=new JFileChooser();
+		this.fcSave=new JFileChooser();
+
 	}
-	
+
 	public String getFiguraSeleccionada(){
 		String fig="";
 		if(this.cuadradoB.isSelected()){
@@ -159,7 +171,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	@Override
 	public void mouseClicked(MouseEvent a) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -247,29 +259,57 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	@Override
 	public void mousePressed(MouseEvent a) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent a) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==this.fotoB){
-			int resp=this.fcFoto.showOpenDialog(null);
+			int resp=this.fcFoto.showOpenDialog(this.pd);
 			if(resp==JFileChooser.APPROVE_OPTION){
 				this.rutaFoto=this.fcFoto.getSelectedFile().toString();
+				System.out.println("camara");
 			}
 		}
 		else if(e.getSource()==this.borradorB){
-			
+
 		}
 		else if(e.getSource()==this.guardarB){
+			this.takeImage();
 		}
-	
+
 	}
+	
+	public void takeImage(){
+		BufferedImage bi=new BufferedImage(this.pd.getWidth(), this.pd.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics g =bi.createGraphics();
+		this.pd.paintAll(g);
+		g.dispose();
+		int returnval;
+		returnval= fcSave.showSaveDialog(null);
+		if(returnval ==  JFileChooser.APPROVE_OPTION){
+			try {
+				ImageIO.write(bi, "png", new File((this.fcSave.getSelectedFile())+ ".png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public PanelDibujo getPd() {
+		return pd;
+	}
+
+	public void setPd(PanelDibujo pd) {
+		this.pd = pd;
+	}
+
 }

@@ -99,7 +99,10 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
-
 	}
+
+	public PanelDibujo getPd() {
+		return this;
+	}	
+	
 }
