@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
-public class Lapiz implements Pintable {
+public class Lapiz extends Pintable {
 	private ArrayList<Point> puntos;
 	
 	public Lapiz(){

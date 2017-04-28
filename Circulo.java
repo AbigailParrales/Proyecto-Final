@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
-public class Circulo implements Pintable{
+public class Circulo extends Pintable{
 private ArrayList<Point> puntos;
 	
 	public Circulo(){

@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
-public class Linea implements Pintable {
+public class Linea extends Pintable {
 	private ArrayList<Point> puntos;
 	
 	public Linea(){

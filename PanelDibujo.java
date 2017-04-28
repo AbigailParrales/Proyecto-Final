@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PanelDibujo extends JPanel implements MouseMotionListener, MouseListener{
 	private ArrayList<Pintable> figuras;
+	private Pintable actual;
+	private PanelControles pc;
 
 	//Lapiz lp;
 	//Cuadrado cd;
@@ -25,9 +27,9 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		this.setPreferredSize(new Dimension(800,700));
 		this.setBackground(Color.WHITE);
 
-		pc= new PanelControles();
+		this.pc=pc;
 
-		this.figuras=new ArrayList<Pintable>();
+		this.figuras=new ArrayList<Pintable>(0);
 
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
@@ -38,42 +40,17 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 
-		/*for (int i=0;i<figuras.size();i++){
-			if(this.figuras.get(i)!=null){
-				this.figuras.get(i).pintate(g);
-			}
-		}*/
+		for (int i=0;i<this.figuras.size();i++){
+			this.figuras.get(i).pintate(g);
+		}
 
-		/*if(lp!=null){
-			this.lp.pintate(g);
-		}
-		 
-		if(cd!=null){
-			this.cd.pintate(g);
-		}
-		
-		
-		if(ci!=null){
-			this.ci.pintate(g);
-		}
-		if(ln!=null){
-			this.ln.pintate(g);
-		}*/
 	}
 
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		/*for (int i=0;i<figuras.size();i++){
-			if(this.figuras.get(i)!=null){
-				this.figuras.get(i).agregarCoordenada(e.getX(), e.getY());
-				repaint();;
-			}
-		}*/
-		//this.lp.agregarCoordenada(e.getX(), e.getY());
-		//this.cd.agregarCoordenada(e.getX(), e.getY());
-		//this.ci.agregarCoordenada(e.getX(), e.getY());
-		//this.ln.agregarCoordenada(e.getX(), e.getY());
+		this.actual.agregarCoordenada(e.getX(), e.getY());
+		this.figuras.add(actual);
 		repaint();
 	}
 
@@ -85,7 +62,7 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+
 	}
 
 	@Override
@@ -102,24 +79,27 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		//this.lp=new Lapiz();
-		//this.lp.agregarCoordenada(e.getX(), e.getY());
-		
-		//this.cd=new Cuadrado();
-		//this.cd.agregarCoordenada(e.getX(), e.getY());
-		
-		//this.ci=new Circulo();
-		//this.ci.agregarCoordenada(e.getX(), e.getY());
-		
-		//this.ln = new Linea();
-		//this.ln.agregarCoordenada(e.getX(), e.getY());
-		
+		if(this.pc.getFiguraSeleccionada()=="Lapiz"){
+			this.actual=new Lapiz();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Cuadrado"){
+			this.actual= new Cuadrado();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Circulo"){
+			this.actual=new Circulo();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Linea"){
+			this.actual = new Linea();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
+
 
 	}
 }
