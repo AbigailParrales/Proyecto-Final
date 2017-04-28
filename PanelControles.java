@@ -43,7 +43,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	fcSave;
 
 	private String rutaFoto,
-				   rutaGuardar;
+	rutaGuardar;
 	public PanelDibujo pd;
 
 	public PanelControles(){
@@ -279,14 +279,19 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 			}
 		}
 		else if(e.getSource()==this.borradorB){
-
+			this.regresar();
 		}
 		else if(e.getSource()==this.guardarB){
 			this.takeImage();
 		}
 
 	}
-	
+	public void regresar(){
+		if(this.borradorB.isSelected()){
+			this.pd.regresar();
+			
+		}
+	}
 	public void takeImage(){
 		BufferedImage bi=new BufferedImage(this.pd.getWidth(), this.pd.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		Graphics g =bi.createGraphics();
@@ -303,9 +308,9 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 			}
 		}
 	}
-	
+
 	//public void 
-	
+
 	public PanelDibujo getPd() {
 		return pd;
 	}

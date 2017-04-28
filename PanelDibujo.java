@@ -50,7 +50,7 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		this.actual.agregarCoordenada(e.getX(), e.getY());
-		this.figuras.add(actual);
+	
 		repaint();
 	}
 
@@ -62,7 +62,22 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-
+		/*if(this.pc.getFiguraSeleccionada()=="Lapiz"){
+			this.actual=new Lapiz();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Cuadrado"){
+			this.actual= new Cuadrado();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Circulo"){
+			this.actual=new Circulo();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Linea"){
+			this.actual = new Linea();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}*/
 	}
 
 	@Override
@@ -75,6 +90,13 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void regresar(){
+		System.out.println(this.figuras);
+		this.figuras.remove(this.figuras.size()-1);
+		repaint();
+		
 	}
 
 	@Override
@@ -95,6 +117,7 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 			this.actual = new Linea();
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
+		this.figuras.add(actual);
 	}
 
 	@Override
