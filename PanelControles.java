@@ -2,43 +2,47 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.awt.Font;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-@SuppressWarnings("serial")
-public class PanelControles extends JPanel implements ActionListener{
+public class PanelControles extends JPanel implements ActionListener, MouseListener{
 	private JRadioButton fotoB,
-	pincelB,
-	borradorB,
-	paletaB,
-	sello1B,
-	sello2B,
-	sello3B,
-	sello4B,
-	cuadradoB,
-	circuloB,
-	//trianguloB,
-	lineaB,
-	guardarB;
-
-	@SuppressWarnings("unused")
+						pincelB,
+						borradorB,
+						paletaB,
+						sello1B,
+						sello2B,
+						sello3B,
+						sello4B,
+						cuadradoB,
+						circuloB,
+						//trianguloB,
+						lineaB,
+						guardarB;
+	
 	private int tamaño;
 
-
+			
 	private JLabel paintL;
 	private ArrayList<Pintable> figuras;
 
 	public PanelControles(){
 		super();
+		this.addMouseListener(this);
 		this.setPreferredSize(new Dimension(200,700));
 		this.setBackground(new Color(204,153,255));
 
-		this.figuras=new ArrayList<Pintable>();		
+		this.figuras=new ArrayList();		
 		this.paintL=new JLabel("Paint Remasterizado");
 		//this.paintL
 		this.add(paintL);
@@ -47,113 +51,120 @@ public class PanelControles extends JPanel implements ActionListener{
 		this.fotoB=new JRadioButton(new ImageIcon("foto.png"));
 		this.fotoB.setPreferredSize(new Dimension(80,80));
 		this.fotoB.addActionListener(this);
+		this.fotoB.addMouseListener(this);
 		this.fotoB.setOpaque(false);
 		this.add(this.fotoB);	
 
 		this.pincelB=new JRadioButton(new ImageIcon("pincel.png"));
 		this.pincelB.setPreferredSize(new Dimension(80,80));
 		this.pincelB.addActionListener(this);
+		this.pincelB.addMouseListener(this);
 		this.pincelB.setOpaque(false);
 		this.add(pincelB);
 
 		this.borradorB=new JRadioButton(new ImageIcon("borrador.png"));
 		this.borradorB.setPreferredSize(new Dimension(80,80));
 		this.borradorB.addActionListener(this);
+		this.borradorB.addMouseListener(this);
 		this.borradorB.setOpaque(false);
 		this.add(borradorB);
 
 		this.paletaB=new JRadioButton(new ImageIcon("paleta.png"));
 		this.paletaB.setPreferredSize(new Dimension(80,80));
 		this.paletaB.addActionListener(this);
+		this.paletaB.addMouseListener(this);
 		this.paletaB.setOpaque(false);
 		this.add(paletaB);
 
 		this.sello1B=new JRadioButton(new ImageIcon("sello1.png"));
 		this.sello1B.setPreferredSize(new Dimension(80,80));
 		this.sello1B.addActionListener(this);
+		this.sello1B.addMouseListener(this);
 		this.sello1B.setOpaque(false);
 		this.add(sello1B);
 
 		this.sello2B=new JRadioButton(new ImageIcon("sello2.png"));
 		this.sello2B.setPreferredSize(new Dimension(80,80));
 		this.sello2B.addActionListener(this);
+		this.sello2B.addMouseListener(this);
 		this.sello2B.setOpaque(false);
 		this.add(sello2B);
 
 		this.sello3B=new JRadioButton(new ImageIcon("sello3.png"));
 		this.sello3B.setPreferredSize(new Dimension(80,80));
 		this.sello3B.addActionListener(this);
+		this.sello3B.addMouseListener(this);
 		this.sello3B.setOpaque(false);
 		this.add(sello3B);
 
 		this.sello4B=new JRadioButton(new ImageIcon("sello4.png"));
 		this.sello4B.setPreferredSize(new Dimension(80,80));
 		this.sello4B.addActionListener(this);
+		this.sello4B.addMouseListener(this);
 		this.sello4B.setOpaque(false);
 		this.add(sello4B);
-
+		
 		this.cuadradoB=new JRadioButton(new ImageIcon("cuadrado.png"));
 		this.cuadradoB.setPreferredSize(new Dimension(80,80));
 		this.cuadradoB.addActionListener(this);
+		this.cuadradoB.addMouseListener(this);
 		this.cuadradoB.setOpaque(false);
 		this.add(cuadradoB);
-
+		
 		this.circuloB=new JRadioButton(new ImageIcon("circulo.png"));
 		this.circuloB.setPreferredSize(new Dimension(80,80));
 		this.circuloB.addActionListener(this);
+		this.circuloB.addMouseListener(this);
 		this.circuloB.setOpaque(false);
 		this.add(circuloB);
-
+		
 		/*this.trianguloB=new JRadioButton(new ImageIcon("triangulo.png"));
 		this.trianguloB.setPreferredSize(new Dimension(80,80));
 		this.trianguloB.addActionListener(this);
 		this.trianguloB.setOpaque(false);
 		this.add(trianguloB); */
-
+		
 		this.lineaB=new JRadioButton(new ImageIcon("linea.png"));
 		this.lineaB.setPreferredSize(new Dimension(80,80));
 		this.lineaB.addActionListener(this);
+		this.lineaB.addMouseListener(this);
 		this.lineaB.setOpaque(false);
 		this.add(lineaB);
+		
 
 		this.guardarB=new JRadioButton(new ImageIcon("guardar.png"));
 		this.guardarB.setPreferredSize(new Dimension(80,80));
 		this.guardarB.addActionListener(this);
+		this.guardarB.addMouseListener(this);
 		this.guardarB.setOpaque(false);
 		this.add(guardarB);
 
 
 
 	}
-
-
-	public ArrayList<Pintable> getFiguras() {
+	
+	/*public ArrayList<Pintable> getFiguras(){
 		return figuras;
 	}
-
+	
+	public int getTamaño(){
+		return figuras.size();
+	}
+*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==this.pincelB){
 			this.figuras.add(new Lapiz());
 			System.out.println("Lapiz");
-			System.out.println(this.figuras);
+			
 		}
 		else if(e.getSource()==this.cuadradoB){
 			this.figuras.add(new Cuadrado());
-			System.out.println("Cuadrado");
-			System.out.println(this.figuras);
 		}
 		else if(e.getSource()==this.circuloB){
 			this.figuras.add(new Circulo());
-			System.out.println("Circulo");
-			System.out.println(this.figuras);
 		}
-		else if(e.getSource()==this.lineaB){
-			this.figuras.add(new Linea());
-			System.out.println("Linea");
-			System.out.println(this.figuras);
-
-			/*else if(e.getSource()==){
+		/*else if(e.getSource()==){
 
 		}
 		else if(e.getSource()==){
@@ -162,9 +173,109 @@ public class PanelControles extends JPanel implements ActionListener{
 		else if(e.getSource()==){
 
 		}
-		}
+		else if(e.getSource()==){
 
-			 */
 		}
+*/
+}
+
+	@Override
+	public void mouseClicked(MouseEvent a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent a) {
+		// TODO Auto-generated method stub
+		if(a.getSource()==this.fotoB){
+			this.fotoB.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.pincelB){
+			this.pincelB.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.borradorB){
+			this.borradorB.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.paletaB){
+			this.paletaB.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.sello1B){
+			this.sello1B.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.sello2B){
+			this.sello2B.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.sello3B){
+			this.sello3B.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.sello4B){
+			this.sello4B.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.cuadradoB){
+			this.cuadradoB.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.circuloB){
+			this.circuloB.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.lineaB){
+			this.lineaB.setSize(new Dimension(100,100));
+		}
+		else if(a.getSource()==this.guardarB){
+			this.guardarB.setSize(new Dimension(100,100));
+		}
+	}
+
+	@Override
+	public void mouseExited(MouseEvent a) {
+		// TODO Auto-generated method stub
+		if(a.getSource()==this.fotoB){
+			this.fotoB.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.pincelB){
+			this.pincelB.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.borradorB){
+			this.borradorB.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.paletaB){
+			this.paletaB.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.sello1B){
+			this.sello1B.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.sello2B){
+			this.sello2B.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.sello3B){
+			this.sello3B.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.sello4B){
+			this.sello4B.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.cuadradoB){
+			this.cuadradoB.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.circuloB){
+			this.circuloB.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.lineaB){
+			this.lineaB.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.guardarB){
+			this.guardarB.setSize(new Dimension(80,80));
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent a) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent a) {
+		// TODO Auto-generated method stub
+		
 	}
 }
