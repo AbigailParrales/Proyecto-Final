@@ -146,7 +146,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		bg.add(rbLinea);
 		bg.add(rbGuardar);
 
-		this.rutaFoto="";
+		this.rutaFoto="C:\\Users\\Daniela Parrales\\Downloads\\Fotos\\varios\\130920645715.png";
 
 		this.fcFoto=new JFileChooser("C:\\Users\\Daniela Parrales\\Downloads\\Fotos\\varios");
 		this.fcSave=new JFileChooser();
@@ -271,7 +271,9 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==this.rbFoto){
+			System.out.println("Entre al action listener");
 			this.obtenerImagen();
+			
 		}
 		else if(e.getSource()==this.rbBorrador){
 			this.regresar();
@@ -310,16 +312,19 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		//this.pd.paintAll(g);
 		//g.dispose();
 		
+		System.out.println("Entré a obtenerImagen()");
+		
 		int returnval;
 		returnval= fcFoto.showOpenDialog(null);
 		if(returnval ==  JFileChooser.APPROVE_OPTION){
 			this.rutaFoto =PanelControles.this.fcFoto.getSelectedFile().toString();
-			System.out.println("Ruta recibida "+this.rutaFoto);
+			System.out.println("Recibí una ruta");
+			System.out.println("Ruta recibida: "+this.rutaFoto+" ---");
 		}
+		System.out.println("Terminé obtenerImagen()");
 		
+		this.getRutaFoto();
 	}
-
-	//public void 
 
 	public PanelDibujo getPd() {
 		return pd;
@@ -330,16 +335,19 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	}
 
 	public String getRutaFoto() {
-		System.out.println("I´m in");
+		System.out.println("Entré a getRutaFoto()");
+		
 		String[] temp = this.rutaFoto.split("\\\\");
-		//System.out.println(temp);
+		
+		System.out.println("Terminé de hacer split, este es mi array: "+"\n"+temp);
+		
 		String ruta="";
 		for(int i=0;i<temp.length-1;i++){
-			ruta+=temp[i]+"\\\\\\\\";
-			System.out.println("en el for");
+			System.out.println("Entré al for para concatenar la ruta");
+			ruta+=temp[i]+"\\\\";
 		}
 		this.rutaFoto=ruta;	
-		System.out.println("ruta= "+this.rutaFoto);
+		System.out.println("Terminé getRutaFoto, esta es la ruta que obtuve= "+this.rutaFoto);
 		return rutaFoto;
 	}
 

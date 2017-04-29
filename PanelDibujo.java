@@ -1,9 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -37,16 +35,16 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
 		
-		this.rutaFoto=this.pc.getRutaFoto();
+		//this.rutaFoto=this.pc.getRutaFoto();
 		
-		this.fondo=new ImageIcon("fondoDefault.png").getImage();
+		//this.fondo=new ImageIcon("fondoDefault.png").getImage();
 		//"C:\\Users\\Daniela Parrales\\Downloads\\Fotos\\varios\\130920645715.png"
 
 	}
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.drawImage(fondo, 0, 0,this.getWidth(),this.getHeight(), this);
+		g.drawImage(new ImageIcon("fondoDefault.png").getImage(), 0, 0,this.getWidth(),this.getHeight(), this);
 		for (int i=0;i<this.figuras.size();i++){
 			this.figuras.get(i).pintate(g);
 		}

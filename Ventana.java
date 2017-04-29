@@ -50,9 +50,11 @@ public class Ventana extends JFrame{
 		this.setResizable(false);
 		PanelControles pc= new PanelControles();
 		this.add(pc, BorderLayout.WEST);
+		System.out.println("Añadí a Panel Controles");
 		PanelDibujo pd =new PanelDibujo(pc);
 		pc.setPd(pd);
 		this.add(pd, BorderLayout.EAST);
+		System.out.println("Añadí a Panel Dibujo");
 		this.pack();
 		this.setVisible(true);
 	}
