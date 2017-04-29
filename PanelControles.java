@@ -24,21 +24,20 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 public class PanelControles extends JPanel implements  ActionListener, MouseListener{
-	private JRadioButton fotoB,
-	pincelB,
-	borradorB,
-	paletaB,
-	sello1B,
-	sello2B,
-	sello3B,
-	sello4B,
-	cuadradoB,
-	circuloB,
-	lineaB,
-	guardarB;
+	private JRadioButton rbFoto,
+						 rbPincel,
+						 rbBorrador,
+						 rbColor,
+						 rbSello1,
+						 rbSello2,
+						 rbSello3,
+						 rbSello4,
+						 rbCuadrado,
+						 rbCirculo,
+						 rbLinea,
+						 rbGuardar;
 
-
-	private JLabel paintL;
+	private JLabel lbTitulo;
 
 	private JFileChooser fcFoto,
 	fcSave;
@@ -47,107 +46,105 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	private PanelDibujo pd;
 	
 	
-	
-
 	public PanelControles(){
 		super();
 		this.addMouseListener(this);
 		this.setPreferredSize(new Dimension(200,700));
 		this.setBackground(new Color(204,153,255));
 
-		this.paintL=new JLabel("Paint Remasterizado");
-		this.add(paintL);
-		paintL.setFont(new Font("Helvetica", Font.BOLD,18));
+		this.lbTitulo=new JLabel("Paint Remasterizado");
+		this.add(lbTitulo);
+		lbTitulo.setFont(new Font("Helvetica", Font.BOLD,18));
 
-		this.fotoB=new JRadioButton(new ImageIcon("foto.png"));
-		this.fotoB.setPreferredSize(new Dimension(80,80));
-		this.fotoB.addMouseListener(this);
-		this.fotoB.addActionListener(this);
-		this.fotoB.setOpaque(false);
-		this.add(this.fotoB);	
+		this.rbFoto=new JRadioButton(new ImageIcon("foto.png"));
+		this.rbFoto.setPreferredSize(new Dimension(80,80));
+		this.rbFoto.addMouseListener(this);
+		this.rbFoto.addActionListener(this);
+		this.rbFoto.setOpaque(false);
+		this.add(this.rbFoto);	
 
-		this.pincelB=new JRadioButton(new ImageIcon("pincel.png"));
-		this.pincelB.setPreferredSize(new Dimension(80,80));
-		this.pincelB.addMouseListener(this);
-		this.pincelB.setOpaque(false);
-		this.add(pincelB);
+		this.rbPincel=new JRadioButton(new ImageIcon("pincel.png"));
+		this.rbPincel.setPreferredSize(new Dimension(80,80));
+		this.rbPincel.addMouseListener(this);
+		this.rbPincel.setOpaque(false);
+		this.add(rbPincel);
 
-		this.borradorB=new JRadioButton(new ImageIcon("borrador.png"));
-		this.borradorB.setPreferredSize(new Dimension(80,80));
-		this.borradorB.addMouseListener(this);
-		this.borradorB.addActionListener(this);
-		this.borradorB.setOpaque(false);
-		this.add(borradorB);
+		this.rbBorrador=new JRadioButton(new ImageIcon("borrador.png"));
+		this.rbBorrador.setPreferredSize(new Dimension(80,80));
+		this.rbBorrador.addMouseListener(this);
+		this.rbBorrador.addActionListener(this);
+		this.rbBorrador.setOpaque(false);
+		this.add(rbBorrador);
 
-		this.paletaB=new JRadioButton(new ImageIcon("paleta.png"));
-		this.paletaB.setPreferredSize(new Dimension(80,80));
-		this.paletaB.addMouseListener(this);
-		this.paletaB.setOpaque(false);
-		this.add(paletaB);
+		this.rbColor=new JRadioButton(new ImageIcon("paleta.png"));
+		this.rbColor.setPreferredSize(new Dimension(80,80));
+		this.rbColor.addMouseListener(this);
+		this.rbColor.setOpaque(false);
+		this.add(rbColor);
 
-		this.sello1B=new JRadioButton(new ImageIcon("sello1.png"));
-		this.sello1B.setPreferredSize(new Dimension(80,80));
-		this.sello1B.addMouseListener(this);
-		this.sello1B.setOpaque(false);
-		this.add(sello1B);
+		this.rbSello1=new JRadioButton(new ImageIcon("sello1.png"));
+		this.rbSello1.setPreferredSize(new Dimension(80,80));
+		this.rbSello1.addMouseListener(this);
+		this.rbSello1.setOpaque(false);
+		this.add(rbSello1);
 
-		this.sello2B=new JRadioButton(new ImageIcon("sello2.png"));
-		this.sello2B.setPreferredSize(new Dimension(80,80));
-		this.sello2B.addMouseListener(this);
-		this.sello2B.setOpaque(false);
-		this.add(sello2B);
+		this.rbSello2=new JRadioButton(new ImageIcon("sello2.png"));
+		this.rbSello2.setPreferredSize(new Dimension(80,80));
+		this.rbSello2.addMouseListener(this);
+		this.rbSello2.setOpaque(false);
+		this.add(rbSello2);
 
-		this.sello3B=new JRadioButton(new ImageIcon("sello3.png"));
-		this.sello3B.setPreferredSize(new Dimension(80,80));
-		this.sello3B.addMouseListener(this);
-		this.sello3B.setOpaque(false);
-		this.add(sello3B);
+		this.rbSello3=new JRadioButton(new ImageIcon("sello3.png"));
+		this.rbSello3.setPreferredSize(new Dimension(80,80));
+		this.rbSello3.addMouseListener(this);
+		this.rbSello3.setOpaque(false);
+		this.add(rbSello3);
 
-		this.sello4B=new JRadioButton(new ImageIcon("sello4.png"));
-		this.sello4B.setPreferredSize(new Dimension(80,80));
-		this.sello4B.addMouseListener(this);
-		this.sello4B.setOpaque(false);
-		this.add(sello4B);
+		this.rbSello4=new JRadioButton(new ImageIcon("sello4.png"));
+		this.rbSello4.setPreferredSize(new Dimension(80,80));
+		this.rbSello4.addMouseListener(this);
+		this.rbSello4.setOpaque(false);
+		this.add(rbSello4);
 
-		this.cuadradoB=new JRadioButton(new ImageIcon("cuadrado.png"));
-		this.cuadradoB.setPreferredSize(new Dimension(80,80));
-		this.cuadradoB.addMouseListener(this);
-		this.cuadradoB.setOpaque(false);
-		this.add(cuadradoB);
+		this.rbCuadrado=new JRadioButton(new ImageIcon("cuadrado.png"));
+		this.rbCuadrado.setPreferredSize(new Dimension(80,80));
+		this.rbCuadrado.addMouseListener(this);
+		this.rbCuadrado.setOpaque(false);
+		this.add(rbCuadrado);
 
-		this.circuloB=new JRadioButton(new ImageIcon("circulo.png"));
-		this.circuloB.setPreferredSize(new Dimension(80,80));
-		this.circuloB.addMouseListener(this);
-		this.circuloB.setOpaque(false);
-		this.add(circuloB);
+		this.rbCirculo=new JRadioButton(new ImageIcon("circulo.png"));
+		this.rbCirculo.setPreferredSize(new Dimension(80,80));
+		this.rbCirculo.addMouseListener(this);
+		this.rbCirculo.setOpaque(false);
+		this.add(rbCirculo);
 
-		this.lineaB=new JRadioButton(new ImageIcon("linea.png"));
-		this.lineaB.setPreferredSize(new Dimension(80,80));
-		this.lineaB.addMouseListener(this);
-		this.lineaB.setOpaque(false);
-		this.add(lineaB);
+		this.rbLinea=new JRadioButton(new ImageIcon("linea.png"));
+		this.rbLinea.setPreferredSize(new Dimension(80,80));
+		this.rbLinea.addMouseListener(this);
+		this.rbLinea.setOpaque(false);
+		this.add(rbLinea);
 
-		this.guardarB=new JRadioButton(new ImageIcon("guardar.png"));
-		this.guardarB.setPreferredSize(new Dimension(80,80));
-		this.guardarB.addMouseListener(this);
-		this.guardarB.addActionListener(this);
-		this.guardarB.setOpaque(false);
-		this.add(guardarB);
+		this.rbGuardar=new JRadioButton(new ImageIcon("guardar.png"));
+		this.rbGuardar.setPreferredSize(new Dimension(80,80));
+		this.rbGuardar.addMouseListener(this);
+		this.rbGuardar.addActionListener(this);
+		this.rbGuardar.setOpaque(false);
+		this.add(rbGuardar);
 
 		ButtonGroup bg=new ButtonGroup();
 
-		bg.add(fotoB);
-		bg.add(pincelB);
-		bg.add(borradorB);
-		bg.add(paletaB);
-		bg.add(sello1B);
-		bg.add(sello2B);
-		bg.add(sello3B);
-		bg.add(sello4B);
-		bg.add(cuadradoB);
-		bg.add(circuloB);
-		bg.add(lineaB);
-		bg.add(guardarB);
+		bg.add(rbFoto);
+		bg.add(rbPincel);
+		bg.add(rbBorrador);
+		bg.add(rbColor);
+		bg.add(rbSello1);
+		bg.add(rbSello2);
+		bg.add(rbSello3);
+		bg.add(rbSello4);
+		bg.add(rbCuadrado);
+		bg.add(rbCirculo);
+		bg.add(rbLinea);
+		bg.add(rbGuardar);
 
 		this.rutaFoto="";
 
@@ -158,13 +155,13 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 
 	public String getFiguraSeleccionada(){
 		String fig="";
-		if(this.cuadradoB.isSelected()){
+		if(this.rbCuadrado.isSelected()){
 			fig="Cuadrado";
-		}else if(this.pincelB.isSelected()){
+		}else if(this.rbPincel.isSelected()){
 			fig="Lapiz";
-		}else if(this.circuloB.isSelected()){
+		}else if(this.rbCirculo.isSelected()){
 			fig="Circulo";
-		}else if(this.lineaB.isSelected()){
+		}else if(this.rbLinea.isSelected()){
 			fig="Linea";
 		}
 		return fig;
@@ -179,82 +176,82 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	@Override
 	public void mouseEntered(MouseEvent a) {
 		// TODO Auto-generated method stub
-		if(a.getSource()==this.fotoB){
-			this.fotoB.setSize(new Dimension(100,100));
+		if(a.getSource()==this.rbFoto){
+			this.rbFoto.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.pincelB){
-			this.pincelB.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbPincel){
+			this.rbPincel.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.borradorB){
-			this.borradorB.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbBorrador){
+			this.rbBorrador.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.paletaB){
-			this.paletaB.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbColor){
+			this.rbColor.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.sello1B){
-			this.sello1B.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbSello1){
+			this.rbSello1.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.sello2B){
-			this.sello2B.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbSello2){
+			this.rbSello2.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.sello3B){
-			this.sello3B.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbSello3){
+			this.rbSello3.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.sello4B){
-			this.sello4B.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbSello4){
+			this.rbSello4.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.cuadradoB){
-			this.cuadradoB.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbCuadrado){
+			this.rbCuadrado.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.circuloB){
-			this.circuloB.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbCirculo){
+			this.rbCirculo.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.lineaB){
-			this.lineaB.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbLinea){
+			this.rbLinea.setSize(new Dimension(100,100));
 		}
-		else if(a.getSource()==this.guardarB){
-			this.guardarB.setSize(new Dimension(100,100));
+		else if(a.getSource()==this.rbGuardar){
+			this.rbGuardar.setSize(new Dimension(100,100));
 		}
 	}
 
 	@Override
 	public void mouseExited(MouseEvent a) {
 		// TODO Auto-generated method stub
-		if(a.getSource()==this.fotoB){
-			this.fotoB.setSize(new Dimension(80,80));
+		if(a.getSource()==this.rbFoto){
+			this.rbFoto.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.pincelB){
-			this.pincelB.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbPincel){
+			this.rbPincel.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.borradorB){
-			this.borradorB.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbBorrador){
+			this.rbBorrador.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.paletaB){
-			this.paletaB.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbColor){
+			this.rbColor.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.sello1B){
-			this.sello1B.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbSello1){
+			this.rbSello1.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.sello2B){
-			this.sello2B.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbSello2){
+			this.rbSello2.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.sello3B){
-			this.sello3B.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbSello3){
+			this.rbSello3.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.sello4B){
-			this.sello4B.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbSello4){
+			this.rbSello4.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.cuadradoB){
-			this.cuadradoB.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbCuadrado){
+			this.rbCuadrado.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.circuloB){
-			this.circuloB.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbCirculo){
+			this.rbCirculo.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.lineaB){
-			this.lineaB.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbLinea){
+			this.rbLinea.setSize(new Dimension(80,80));
 		}
-		else if(a.getSource()==this.guardarB){
-			this.guardarB.setSize(new Dimension(80,80));
+		else if(a.getSource()==this.rbGuardar){
+			this.rbGuardar.setSize(new Dimension(80,80));
 		}
 	}
 
@@ -273,19 +270,19 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==this.fotoB){
+		if(e.getSource()==this.rbFoto){
 			this.obtenerImagen();
 		}
-		else if(e.getSource()==this.borradorB){
+		else if(e.getSource()==this.rbBorrador){
 			this.regresar();
 		}
-		else if(e.getSource()==this.guardarB){
+		else if(e.getSource()==this.rbGuardar){
 			this.guardarImagen();
 		}
 
 	}
 	public void regresar(){
-		if(this.borradorB.isSelected()){
+		if(this.rbBorrador.isSelected()){
 			this.pd.regresar();
 			
 		}
@@ -317,7 +314,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		returnval= fcFoto.showOpenDialog(null);
 		if(returnval ==  JFileChooser.APPROVE_OPTION){
 			this.rutaFoto =PanelControles.this.fcFoto.getSelectedFile().toString();
-			System.out.println(this.rutaFoto);
+			System.out.println("Ruta recibida "+this.rutaFoto);
 		}
 		
 	}
@@ -333,16 +330,16 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	}
 
 	public String getRutaFoto() {
-		System.out.println("\nRuta: " + rutaFoto.replace("\\", "\\\\"));
 		System.out.println("I´m in");
-		/*
-		String[] temp = this.rutaFoto.split('\');
-		System.out.println(temp);
+		String[] temp = this.rutaFoto.split("\\\\");
+		//System.out.println(temp);
 		String ruta="";
-		for(int i=0;i<temp.length;i++){
-			ruta+=temp[i]+"\\";
+		for(int i=0;i<temp.length-1;i++){
+			ruta+=temp[i]+"\\\\\\\\";
+			System.out.println("en el for");
 		}
-		this.rutaFoto=ruta;*/
+		this.rutaFoto=ruta;	
+		System.out.println("ruta= "+this.rutaFoto);
 		return rutaFoto;
 	}
 

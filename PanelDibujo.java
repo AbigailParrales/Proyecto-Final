@@ -39,7 +39,7 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		
 		this.rutaFoto=this.pc.getRutaFoto();
 		
-		this.fondo=new ImageIcon(this.rutaFoto).getImage();
+		this.fondo=new ImageIcon("fondoDefault.png").getImage();
 		//"C:\\Users\\Daniela Parrales\\Downloads\\Fotos\\varios\\130920645715.png"
 
 	}
