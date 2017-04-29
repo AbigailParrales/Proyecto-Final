@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
@@ -35,16 +37,17 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	lineaB,
 	guardarB;
 
-	//private int tamaño;
 
 	private JLabel paintL;
 
 	private JFileChooser fcFoto,
 	fcSave;
 
-	private String rutaFoto,
-	rutaGuardar;
-	public PanelDibujo pd;
+	private String rutaFoto;
+	private PanelDibujo pd;
+	
+	
+	
 
 	public PanelControles(){
 		super();
@@ -147,9 +150,8 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		bg.add(guardarB);
 
 		this.rutaFoto="";
-		this.rutaGuardar="";
 
-		this.fcFoto=new JFileChooser();
+		this.fcFoto=new JFileChooser("C:\\Users\\Daniela Parrales\\Downloads\\Fotos\\varios");
 		this.fcSave=new JFileChooser();
 
 	}
@@ -272,17 +274,13 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==this.fotoB){
-			int resp=this.fcFoto.showOpenDialog(this.pd);
-			if(resp==JFileChooser.APPROVE_OPTION){
-				this.rutaFoto=this.fcFoto.getSelectedFile().toString();
-				System.out.println("camara");
-			}
+			this.obtenerImagen();
 		}
 		else if(e.getSource()==this.borradorB){
 			this.regresar();
 		}
 		else if(e.getSource()==this.guardarB){
-			this.takeImage();
+			this.guardarImagen();
 		}
 
 	}
@@ -292,7 +290,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 			
 		}
 	}
-	public void takeImage(){
+	public void guardarImagen(){
 		BufferedImage bi=new BufferedImage(this.pd.getWidth(), this.pd.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		Graphics g =bi.createGraphics();
 		this.pd.paintAll(g);
@@ -308,6 +306,21 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 			}
 		}
 	}
+	
+	public void obtenerImagen(){
+		//BufferedImage bi=new BufferedImage(this.pd.getWidth(), this.pd.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		//Graphics g =bi.createGraphics();
+		//this.pd.paintAll(g);
+		//g.dispose();
+		
+		int returnval;
+		returnval= fcFoto.showOpenDialog(null);
+		if(returnval ==  JFileChooser.APPROVE_OPTION){
+			this.rutaFoto =PanelControles.this.fcFoto.getSelectedFile().toString();
+			System.out.println(this.rutaFoto);
+		}
+		
+	}
 
 	//public void 
 
@@ -318,5 +331,25 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	public void setPd(PanelDibujo pd) {
 		this.pd = pd;
 	}
+
+	public String getRutaFoto() {
+		System.out.println("\nRuta: " + rutaFoto.replace("\\", "\\\\"));
+		System.out.println("I´m in");
+		/*
+		String[] temp = this.rutaFoto.split('\');
+		System.out.println(temp);
+		String ruta="";
+		for(int i=0;i<temp.length;i++){
+			ruta+=temp[i]+"\\";
+		}
+		this.rutaFoto=ruta;*/
+		return rutaFoto;
+	}
+
+	public void setRutaFoto(String rutaFoto) {
+		this.rutaFoto = rutaFoto;
+	}
+	
+	
 
 }
