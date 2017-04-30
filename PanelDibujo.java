@@ -16,7 +16,6 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	private ArrayList<Pintable> figuras;
 	private Pintable actual;
 	private PanelControles pc;
-	//private boolean a;
 
 	//private Image fondo;
 	//private String rutaFoto;
@@ -34,12 +33,12 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		this.pc=pc;
 
 		this.figuras=new ArrayList<Pintable>(0);
+		
+		this.actual=new PuntoCiego();
+		this.figuras.add(actual);
 
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
-
-		//this.a=this.pc.getA();
-
 
 		//this.rutaFoto=this.pc.getRutaFoto();
 
@@ -49,13 +48,14 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	}
 
 	public void paintComponent(Graphics g){
-		System.out.println("Entré a paintComponent()");
 		super.paintComponent(g);
+		System.out.println("Entré a paintComponent()");
+		
+		
 		g.drawImage(new ImageIcon(this.pc.getRutaFoto()).getImage(), 0, 0,this.getWidth(),this.getHeight(), this);
 		for (int i=0;i<this.figuras.size();i++){
 			System.out.println("Pintando figura: "+ (i+1));
 			this.figuras.get(i).pintate(g);
-			//System.out.println("a:"+this.a);
 		}
 		System.out.println("Termine de pintar");
 	}
@@ -75,14 +75,28 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//if (a==false){
-			if(this.pc.getFiguraSeleccionada()=="Sello1"){
-				this.actual = new Sello1();
-				this.actual.agregarCoordenada(e.getX(), e.getY());
-			}
-			this.figuras.add(actual);
-			repaint();
-		//}
+		if(this.pc.getFiguraSeleccionada()=="Sello1"){
+			this.actual = new Sello1();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Sello2"){
+			this.actual = new Sello2();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Sello3"){
+			this.actual = new Sello3();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Sello4"){
+			this.actual = new Sello4();
+			this.actual.agregarCoordenada(e.getX(), e.getY());
+		}
+		else if(this.pc.getFiguraSeleccionada()=="Foto"){
+			this.actual = new Fondo();
+		}
+
+		this.figuras.add(actual);
+		repaint();
 	}
 
 	@Override
@@ -113,10 +127,6 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 
 		System.out.println("Panel dibujo detectó mouse presionado");
 
-		this.actual=new Lapiz();
-		this.actual.agregarCoordenada(e.getX(), e.getY());
-
-
 		if(figSel=="Lapiz"){
 			this.actual=new Lapiz();
 			this.actual.agregarCoordenada(e.getX(), e.getY());
@@ -132,9 +142,6 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		else if(figSel=="Linea"){
 			this.actual = new Linea();
 			this.actual.agregarCoordenada(e.getX(), e.getY());
-		}
-		else if(figSel=="Foto"){
-			this.actual = new Fondo();
 		}
 
 		this.figuras.add(actual);

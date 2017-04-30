@@ -42,6 +42,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class Ventana extends JFrame{
 	public Ventana(){
 		super("Paint Remasterizado");		
@@ -59,6 +60,7 @@ public class Ventana extends JFrame{
 		this.setVisible(true);
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Ventana win=new Ventana();
 	}

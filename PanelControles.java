@@ -46,8 +46,6 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 				   fig;
 	private PanelDibujo pd;
 	
-	//private boolean a;
-	
 	public PanelControles(){
 		super();
 		this.addMouseListener(this);
@@ -319,9 +317,18 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		else if(e.getSource()==this.rbSello1){
 			System.out.println("La figura seleccionada es: "+ fig);
 			fig="Sello1";
-			
-			//this.a=false;
-			//System.out.println("a: "+this.a);
+		}
+		else if(e.getSource()==this.rbSello2){
+			System.out.println("La figura seleccionada es: "+ fig);
+			fig="Sello2";
+		}
+		else if(e.getSource()==this.rbSello3){
+			System.out.println("La figura seleccionada es: "+ fig);
+			fig="Sello3";
+		}
+		else if(e.getSource()==this.rbSello4){
+			System.out.println("La figura seleccionada es: "+ fig);
+			fig="Sello4";
 		}
 	}
 	public void regresar(){
