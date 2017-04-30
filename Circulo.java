@@ -14,6 +14,7 @@ private ArrayList<Point> puntos;
 	}
 	
 	public void pintate(Graphics g) {
+		System.out.println("Estoy en pintar círculo");
 		Point p1=this.puntos.get(0);
 		Point p2=this.puntos.get(puntos.size()-1);
 		

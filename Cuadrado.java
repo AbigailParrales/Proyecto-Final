@@ -14,6 +14,7 @@ public class Cuadrado extends Pintable {
 	}
 	
 	public void pintate(Graphics g) {
+		System.out.println("Entré a pintar cuadrado");
 		Point p1=this.puntos.get(0);
 		Point p2=this.puntos.get(puntos.size()-1);
 		

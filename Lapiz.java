@@ -15,6 +15,7 @@ public class Lapiz extends Pintable {
 	}
 	
 	public void pintate(Graphics g) {
+		System.out.println("Entré a pintar lapiz");
 		Point pA=this.puntos.get(0);
 		for(Point p:this.puntos){
 			g.drawLine((int)p.getX(), (int)p.getY(), (int)pA.getX(), (int)pA.getY());
