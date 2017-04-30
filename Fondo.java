@@ -1,8 +1,8 @@
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Point;
+//import java.awt.Point;
 import java.awt.image.ImageObserver;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 

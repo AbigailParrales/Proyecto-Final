@@ -42,9 +42,11 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	private JFileChooser fcFoto,
 	fcSave;
 
-	private String rutaFoto;
+	private String rutaFoto,
+				   fig;
 	private PanelDibujo pd;
 	
+	//private boolean a;
 	
 	public PanelControles(){
 		super();
@@ -66,6 +68,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.rbPincel=new JRadioButton(new ImageIcon("pincel.png"));
 		this.rbPincel.setPreferredSize(new Dimension(80,80));
 		this.rbPincel.addMouseListener(this);
+		this.rbPincel.addActionListener(this);
 		this.rbPincel.setOpaque(false);
 		this.add(rbPincel);
 
@@ -79,48 +82,56 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.rbColor=new JRadioButton(new ImageIcon("paleta.png"));
 		this.rbColor.setPreferredSize(new Dimension(80,80));
 		this.rbColor.addMouseListener(this);
+		this.rbColor.addActionListener(this);
 		this.rbColor.setOpaque(false);
 		this.add(rbColor);
 
 		this.rbSello1=new JRadioButton(new ImageIcon("sello1.png"));
 		this.rbSello1.setPreferredSize(new Dimension(80,80));
 		this.rbSello1.addMouseListener(this);
+		this.rbSello1.addActionListener(this);
 		this.rbSello1.setOpaque(false);
 		this.add(rbSello1);
 
 		this.rbSello2=new JRadioButton(new ImageIcon("sello2.png"));
 		this.rbSello2.setPreferredSize(new Dimension(80,80));
 		this.rbSello2.addMouseListener(this);
+		this.rbSello2.addActionListener(this);
 		this.rbSello2.setOpaque(false);
 		this.add(rbSello2);
 
 		this.rbSello3=new JRadioButton(new ImageIcon("sello3.png"));
 		this.rbSello3.setPreferredSize(new Dimension(80,80));
 		this.rbSello3.addMouseListener(this);
+		this.rbSello3.addActionListener(this);
 		this.rbSello3.setOpaque(false);
 		this.add(rbSello3);
 
 		this.rbSello4=new JRadioButton(new ImageIcon("sello4.png"));
 		this.rbSello4.setPreferredSize(new Dimension(80,80));
 		this.rbSello4.addMouseListener(this);
+		this.rbSello4.addActionListener(this);
 		this.rbSello4.setOpaque(false);
 		this.add(rbSello4);
 
 		this.rbCuadrado=new JRadioButton(new ImageIcon("cuadrado.png"));
 		this.rbCuadrado.setPreferredSize(new Dimension(80,80));
 		this.rbCuadrado.addMouseListener(this);
+		this.rbCuadrado.addActionListener(this);
 		this.rbCuadrado.setOpaque(false);
 		this.add(rbCuadrado);
 
 		this.rbCirculo=new JRadioButton(new ImageIcon("circulo.png"));
 		this.rbCirculo.setPreferredSize(new Dimension(80,80));
 		this.rbCirculo.addMouseListener(this);
+		this.rbCirculo.addActionListener(this);
 		this.rbCirculo.setOpaque(false);
 		this.add(rbCirculo);
 
 		this.rbLinea=new JRadioButton(new ImageIcon("linea.png"));
 		this.rbLinea.setPreferredSize(new Dimension(80,80));
 		this.rbLinea.addMouseListener(this);
+		this.rbLinea.addActionListener(this);
 		this.rbLinea.setOpaque(false);
 		this.add(rbLinea);
 
@@ -151,23 +162,13 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.fcFoto=new JFileChooser("C:\\Users\\Daniela Parrales\\Downloads\\Fotos\\varios");
 		this.fcSave=new JFileChooser();
 
+		this.fig="Lapiz";
 	}
 
 	public String getFiguraSeleccionada(){
-		String fig="";
-		if(this.rbCuadrado.isSelected()){
-			fig="Cuadrado";
-		}else if(this.rbPincel.isSelected()){
-			fig="Lapiz";
-		}else if(this.rbCirculo.isSelected()){
-			fig="Circulo";
-		}else if(this.rbLinea.isSelected()){
-			fig="Linea";
-		}
-		else if(this.rbFoto.isSelected()){
-			fig="Foto";
-		}
-		return fig;
+		System.out.println("Entré a getFiguaraSeleccionada()");
+		System.out.println("Figura seleccionada: "+this.fig);
+		return this.fig;
 	}
 
 	@Override
@@ -272,19 +273,56 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		System.out.println("Entre al action listener");
 		if(e.getSource()==this.rbFoto){
-			System.out.println("Entre al action listener");
+			System.out.println("Seleccionó obtener foto");
 			this.obtenerImagen();
-			
 		}
 		else if(e.getSource()==this.rbBorrador){
+			System.out.println("Seleccionó borrar el último elemento");
 			this.regresar();
 		}
 		else if(e.getSource()==this.rbGuardar){
+			System.out.println("Seleccionó guardae foto");
 			this.guardarImagen();
 		}
-
+		else if(e.getSource()==this.rbCuadrado){
+			fig="Cuadrado";
+			System.out.println("La figura seleccionada es: "+ fig);
+			//this.a=true;
+			//System.out.println("a: "+this.a);
+		}
+		else if(e.getSource()==this.rbPincel){
+			fig="Lapiz";
+			System.out.println("La figura seleccionada es: "+ fig);
+			//this.a=true;
+			//System.out.println("a: "+this.a);
+		}
+		else if(e.getSource()==this.rbCirculo){
+			fig="Circulo";
+			System.out.println("La figura seleccionada es: "+ fig);
+			//this.a=true;
+			//System.out.println("a: "+this.a);
+		}
+		else if(e.getSource()==this.rbLinea){
+			fig="Linea";
+			System.out.println("La figura seleccionada es: "+ fig);
+			//this.a=true;
+			//System.out.println("a: "+this.a);
+		}
+		else if(e.getSource()==this.rbFoto){
+			fig="Foto";
+			System.out.println("La figura seleccionada es: "+ fig);
+			//this.a=true;
+			//System.out.println("a: "+this.a);
+		}
+		else if(e.getSource()==this.rbSello1){
+			System.out.println("La figura seleccionada es: "+ fig);
+			fig="Sello1";
+			
+			//this.a=false;
+			//System.out.println("a: "+this.a);
+		}
 	}
 	public void regresar(){
 		if(this.rbBorrador.isSelected()){
@@ -353,4 +391,11 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	public String getRutaFoto() {
 		return this.rutaFoto;
 	}
+
+
+	/*public boolean getA() {
+		return this.a;
+	}*/
+
+	
 }
