@@ -58,7 +58,6 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		System.out.println("Termine de pintar");
 	}
 
-
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		this.actual.agregarCoordenada(e.getX(), e.getY());

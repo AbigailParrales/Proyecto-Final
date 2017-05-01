@@ -36,7 +36,8 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	rbCuadrado,
 	rbCirculo,
 	rbLinea,
-	rbGuardar;
+	rbGuardar,
+	rbRellenar;
 
 	private JLabel lbTitulo;
 
@@ -49,6 +50,8 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	private Color color;
 
 	private PanelDibujo pd;
+	
+	private int i;
 
 	public PanelControles(){
 		super();
@@ -143,6 +146,13 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.rbGuardar.addActionListener(this);
 		this.rbGuardar.setOpaque(false);
 		this.add(rbGuardar);
+		
+		this.rbRellenar=new JRadioButton(new ImageIcon("CasillaSnSel.png"));
+		this.rbRellenar.setPreferredSize(new Dimension(80,80));
+		this.rbRellenar.addMouseListener(this);
+		this.rbRellenar.addActionListener(this);
+		this.rbRellenar.setOpaque(false);
+		this.add(rbRellenar);
 
 		ButtonGroup bg=new ButtonGroup();
 
@@ -158,6 +168,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		bg.add(rbCirculo);
 		bg.add(rbLinea);
 		bg.add(rbGuardar);
+		bg.add(rbRellenar);
 
 		this.rutaFoto="fondoDefault.png";
 
@@ -165,6 +176,8 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.fcSave=new JFileChooser();
 
 		this.fig="Lapiz";
+		
+		this.i=1;
 	}
 
 	public String getFiguraSeleccionada(){
@@ -175,8 +188,16 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 
 	@Override
 	public void mouseClicked(MouseEvent a) {
-		// TODO Auto-generated method stub
-
+		if(i==1){
+			if(a.getSource()==this.rbRellenar){
+				this.rbRellenar.setIcon(new ImageIcon("CasillaSel.png"));
+				this.i=0;
+			}
+		}
+		//else if{
+			
+		//}
+		
 	}
 
 	@Override
@@ -218,6 +239,9 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		else if(a.getSource()==this.rbGuardar){
 			this.rbGuardar.setSize(new Dimension(100,100));
 		}
+		else if(a.getSource()==this.rbRellenar){
+			this.rbRellenar.setSize(new Dimension(100,100));
+		}
 	}
 
 	@Override
@@ -258,6 +282,9 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		}
 		else if(a.getSource()==this.rbGuardar){
 			this.rbGuardar.setSize(new Dimension(80,80));
+		}
+		else if(a.getSource()==this.rbRellenar){
+			this.rbRellenar.setSize(new Dimension(80,80));
 		}
 	}
 
