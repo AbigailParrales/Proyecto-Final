@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class Cuadrado extends Pintable {
 	private ArrayList<Point> puntos;
 	private Color tinta;
-	
-	public Cuadrado(Color tinta){
+	private Boolean relleno;
+
+	public Cuadrado(Color tinta, Boolean relleno){
 		this.puntos=new ArrayList<>();
 		this.tinta=tinta;
+		this.relleno=relleno;
 	}
 
 	public void agregarCoordenada(int x, int y){
@@ -21,25 +23,42 @@ public class Cuadrado extends Pintable {
 		Point p1=this.puntos.get(0);
 		Point p2=this.puntos.get(puntos.size()-1);
 		
+
 		g.setColor(tinta);
+
 		//g.drawRect((int)p1.getX(), (int)p1.getY(), (int)p2.getX()-(int)p1.getX(), (int)p2.getY()-(int)p1.getY());
+		if(this.relleno){
+			if((int)p1.getX()<(int)p2.getX() && (int)p1.getY()<(int)p2.getY()){
+				g.fillRect((int)p1.getX(), (int)p1.getY(), (int)p2.getX()-(int)p1.getX(), (int)p2.getY()-(int)p1.getY());
+			}
+			else if((int)p1.getX()<(int)p2.getX() && (int)p2.getY()<(int)p1.getY()){
+				g.fillRect((int)p1.getX(), (int)p2.getY(), (int)p2.getX()-(int)p1.getX(), (int)p1.getY()-(int)p2.getY());
+			}
+			else if((int)p2.getX()<(int)p1.getX() && (int)p1.getY()<(int)p2.getY()){
+				g.fillRect((int)p2.getX(), (int)p1.getY(), (int)p1.getX()-(int)p2.getX(), (int)p2.getY()-(int)p1.getY());
+			}
+			else if((int)p2.getX()<(int)p1.getX() && (int)p2.getY()<(int)p1.getY()){
+				g.fillRect((int)p2.getX(), (int)p2.getY(), (int)p1.getX()-(int)p2.getX(), (int)p1.getY()-(int)p2.getY());
+			}
 
-		if((int)p1.getX()<(int)p2.getX() && (int)p1.getY()<(int)p2.getY()){
-			g.drawRect((int)p1.getX(), (int)p1.getY(), (int)p2.getX()-(int)p1.getX(), (int)p2.getY()-(int)p1.getY());
-		}
-		else if((int)p1.getX()<(int)p2.getX() && (int)p2.getY()<(int)p1.getY()){
-			g.drawRect((int)p1.getX(), (int)p2.getY(), (int)p2.getX()-(int)p1.getX(), (int)p1.getY()-(int)p2.getY());
-		}
-		else if((int)p2.getX()<(int)p1.getX() && (int)p1.getY()<(int)p2.getY()){
-			g.drawRect((int)p2.getX(), (int)p1.getY(), (int)p1.getX()-(int)p2.getX(), (int)p2.getY()-(int)p1.getY());
-		}
-		else if((int)p2.getX()<(int)p1.getX() && (int)p2.getY()<(int)p1.getY()){
-			g.drawRect((int)p2.getX(), (int)p2.getY(), (int)p1.getX()-(int)p2.getX(), (int)p1.getY()-(int)p2.getY());
-		}
-
-		/*for(Point p:this.puntos){
+			/*for(Point p:this.puntos){
 			g.drawRect((int)p.getX(), (int)p.getY(), (int)pA.getX()-(int)p.getX(), (int)pA.getY()-(int)p.getY());
 		}*/
+		}
+		else{
+			if((int)p1.getX()<(int)p2.getX() && (int)p1.getY()<(int)p2.getY()){
+				g.drawRect((int)p1.getX(), (int)p1.getY(), (int)p2.getX()-(int)p1.getX(), (int)p2.getY()-(int)p1.getY());
+			}
+			else if((int)p1.getX()<(int)p2.getX() && (int)p2.getY()<(int)p1.getY()){
+				g.drawRect((int)p1.getX(), (int)p2.getY(), (int)p2.getX()-(int)p1.getX(), (int)p1.getY()-(int)p2.getY());
+			}
+			else if((int)p2.getX()<(int)p1.getX() && (int)p1.getY()<(int)p2.getY()){
+				g.drawRect((int)p2.getX(), (int)p1.getY(), (int)p1.getX()-(int)p2.getX(), (int)p2.getY()-(int)p1.getY());
+			}
+			else if((int)p2.getX()<(int)p1.getX() && (int)p2.getY()<(int)p1.getY()){
+				g.drawRect((int)p2.getX(), (int)p2.getY(), (int)p1.getX()-(int)p2.getX(), (int)p1.getY()-(int)p2.getY());
+			}
+		}
 	}
 
 }

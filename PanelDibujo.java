@@ -131,11 +131,11 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
 		if(figSel=="Cuadrado"){
-			this.actual= new Cuadrado(this.pc.getColorTinta());
+			this.actual= new Cuadrado(this.pc.getColorTinta(), this.pc.getRelleno());
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
 		else if(figSel=="Circulo"){
-			this.actual=new Circulo(this.pc.getColorTinta());
+			this.actual=new Circulo(this.pc.getColorTinta(), this.pc.getRelleno());
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
 		else if(figSel=="Linea"){

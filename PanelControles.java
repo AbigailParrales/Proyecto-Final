@@ -50,8 +50,10 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	private Color color;
 
 	private PanelDibujo pd;
-	
+
 	private int i;
+	
+	private Boolean relleno;
 
 	public PanelControles(){
 		super();
@@ -146,7 +148,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.rbGuardar.addActionListener(this);
 		this.rbGuardar.setOpaque(false);
 		this.add(rbGuardar);
-		
+
 		this.rbRellenar=new JRadioButton(new ImageIcon("CasillaSnSel.png"));
 		this.rbRellenar.setPreferredSize(new Dimension(80,80));
 		this.rbRellenar.addMouseListener(this);
@@ -176,8 +178,10 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 		this.fcSave=new JFileChooser();
 
 		this.fig="Lapiz";
-		
+
 		this.i=1;
+		
+		this.relleno=false;
 	}
 
 	public String getFiguraSeleccionada(){
@@ -188,16 +192,24 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 
 	@Override
 	public void mouseClicked(MouseEvent a) {
-		if(i==1){
-			if(a.getSource()==this.rbRellenar){
-				this.rbRellenar.setIcon(new ImageIcon("CasillaSel.png"));
-				this.i=0;
-			}
-		}
-		//else if{
-			
-		//}
 		
+			if(a.getSource()==this.rbRellenar){
+				if(i==1){
+					this.rbRellenar.setIcon(new ImageIcon("CasillaSel.png"));
+					this.i=0;
+					this.relleno=true;
+				}	
+				else if(i==0){
+					this.rbRellenar.setIcon(new ImageIcon("CasillaSnSel.png"));
+					this.i=1;
+					this.relleno=false;
+				}
+			}
+			
+		//else if{
+
+		//}
+
 	}
 
 	@Override
@@ -303,7 +315,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	public  Color getColorTinta(){
 		return this.color;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Entre al action listener");
@@ -440,6 +452,12 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	public String getRutaFoto() {
 		return this.rutaFoto;
 	}
+
+	public Boolean getRelleno() {
+		return relleno;
+	}
+	
+	
 
 
 }
