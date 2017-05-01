@@ -108,13 +108,15 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 	}
 
 	public void regresar(){
-		if(this.figuras.size()>=0){
-			System.out.println(this.figuras);
+		if(this.figuras.size()>=2){
 			this.figuras.remove(this.figuras.size()-1);
+			System.out.println(this.figuras);
 			repaint();
 		}
 		else{
-			JOptionPane.showMessageDialog(this, "Ya no hay figuras a borrar");
+			System.out.println(this.figuras);
+			throw new ArrayIndexOutOfBoundsException();
+			
 		}
 	}
 

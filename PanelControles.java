@@ -371,8 +371,12 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	}
 	public void regresar(){
 		if(this.rbBorrador.isSelected()){
-			this.pd.regresar();
-
+			try{
+				this.pd.regresar();
+			}
+			catch(ArrayIndexOutOfBoundsException e){
+				JOptionPane.showMessageDialog(this, "Ya no hay figuras a borrar");
+			}
 		}
 	}
 	public void guardarImagen(){
