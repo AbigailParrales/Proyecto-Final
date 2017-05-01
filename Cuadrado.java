@@ -17,12 +17,12 @@ public class Cuadrado extends Pintable {
 	}
 
 	public void pintate(Graphics g) {
-		System.out.println("Entré a pintar cuadrado");
+		System.out.println("Entre a pintar cuadrado");
 		Point p1=this.puntos.get(0);
 		Point p2=this.puntos.get(puntos.size()-1);
 		
 		g.setColor(tinta);
-		g.drawRect((int)p1.getX(), (int)p1.getY(), (int)p2.getX()-(int)p1.getX(), (int)p2.getY()-(int)p1.getY());
+		//g.drawRect((int)p1.getX(), (int)p1.getY(), (int)p2.getX()-(int)p1.getX(), (int)p2.getY()-(int)p1.getY());
 
 		if((int)p1.getX()<(int)p2.getX() && (int)p1.getY()<(int)p2.getY()){
 			g.drawRect((int)p1.getX(), (int)p1.getY(), (int)p2.getX()-(int)p1.getX(), (int)p2.getY()-(int)p1.getY());
