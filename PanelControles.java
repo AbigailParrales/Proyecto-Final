@@ -15,6 +15,7 @@ import java.awt.Graphics;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
 //import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -25,17 +26,17 @@ import javax.swing.JRadioButton;
 @SuppressWarnings("serial")
 public class PanelControles extends JPanel implements  ActionListener, MouseListener{
 	private JRadioButton rbFoto,
-						 rbPincel,
-						 rbBorrador,
-						 rbColor,
-						 rbSello1,
-						 rbSello2,
-						 rbSello3,
-						 rbSello4,
-						 rbCuadrado,
-						 rbCirculo,
-						 rbLinea,
-						 rbGuardar;
+	rbPincel,
+	rbBorrador,
+	rbColor,
+	rbSello1,
+	rbSello2,
+	rbSello3,
+	rbSello4,
+	rbCuadrado,
+	rbCirculo,
+	rbLinea,
+	rbGuardar;
 
 	private JLabel lbTitulo;
 
@@ -43,9 +44,12 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	fcSave;
 
 	private String rutaFoto,
-				   fig;
+	fig;
+
+	private Color color;
+
 	private PanelDibujo pd;
-	
+
 	public PanelControles(){
 		super();
 		this.addMouseListener(this);
@@ -269,6 +273,10 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 
 	}
 
+	public  Color getColorTinta(){
+		return this.color;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Entre al action listener");
@@ -330,11 +338,14 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 			System.out.println("La figura seleccionada es: "+ fig);
 			fig="Sello4";
 		}
+		else if(e.getSource()==this.rbColor){
+			this.color=JColorChooser.showDialog(this.pd,"Elije el color de tinta", Color.BLACK);
+		}
 	}
 	public void regresar(){
 		if(this.rbBorrador.isSelected()){
 			this.pd.regresar();
-			
+
 		}
 	}
 	public void guardarImagen(){
@@ -353,10 +364,10 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 			}
 		}
 	}
-	
+
 	public void obtenerImagen(){
 		System.out.println("Entré a obtenerImagen()");
-		
+
 		int returnval;
 		returnval= fcFoto.showOpenDialog(null);
 		if(returnval ==  JFileChooser.APPROVE_OPTION){
@@ -366,7 +377,7 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 			JOptionPane.showMessageDialog(pd, "Para que la imagen se vea da click en el área de dibujo");
 		}
 		System.out.println("Terminé obtenerImagen()");
-		
+
 		this.setRutaFoto();
 	}
 
@@ -380,11 +391,11 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 
 	public String setRutaFoto() {
 		System.out.println("Entré a getRutaFoto()");
-		
+
 		String[] temp = this.rutaFoto.split("\\\\");
-		
+
 		System.out.println("Terminé de hacer split, este es mi array: "+"\n"+temp);
-		
+
 		String ruta="";
 		for(int i=0;i<temp.length-1;i++){
 			System.out.println("Entré al for para concatenar la ruta");
@@ -400,9 +411,4 @@ public class PanelControles extends JPanel implements  ActionListener, MouseList
 	}
 
 
-	/*public boolean getA() {
-		return this.a;
-	}*/
-
-	
 }

@@ -40,8 +40,6 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		this.addMouseMotionListener(this);
 		this.addMouseListener(this);
 
-		//this.rutaFoto=this.pc.getRutaFoto();
-
 		//this.fondo=new ImageIcon("fondoDefault.png").getImage();
 		//"C:\\Users\\Daniela Parrales\\Downloads\\Fotos\\varios\\130920645715.png"
 
@@ -128,19 +126,19 @@ public class PanelDibujo extends JPanel implements MouseMotionListener, MouseLis
 		System.out.println("Panel dibujo detectó mouse presionado");
 
 		if(figSel=="Lapiz"){
-			this.actual=new Lapiz();
+			this.actual=new Lapiz(this.pc.getColorTinta());
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
 		if(figSel=="Cuadrado"){
-			this.actual= new Cuadrado();
+			this.actual= new Cuadrado(this.pc.getColorTinta());
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
 		else if(figSel=="Circulo"){
-			this.actual=new Circulo();
+			this.actual=new Circulo(this.pc.getColorTinta());
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
 		else if(figSel=="Linea"){
-			this.actual = new Linea();
+			this.actual = new Linea(this.pc.getColorTinta());
 			this.actual.agregarCoordenada(e.getX(), e.getY());
 		}
 
